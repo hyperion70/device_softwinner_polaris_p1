@@ -1,0 +1,17 @@
+# Android fstab file.
+
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+#<src>                   <mnt_point>    <type>      <mnt_flags and options>    <fs_mgr_flags>
+
+/dev/block/nanda         /bootloader     vfat		defaults                   recoveryonly
+/dev/block/nandb         /env            emmc		defaults                   recoveryonly
+/dev/block/nandc         /boot           emmc		defaults                   recoveryonly
+/dev/block/nandd         /system         ext4       ro                                                                    wait
+/dev/block/nande         /data           ext4       rw,noatime,nosuid,nodev,barrier=0,journal_checksum,noauto_da_alloc    wait
+/dev/block/nandf         /misc           emmc		defaults                   recoveryonly
+/dev/block/nandg         /recovery       ext4       defaults recoveryonly
+/dev/block/nandh         /cache          ext4       rw,noatime,nosuid,nodev,barrier=0,journal_checksum,noauto_da_alloc    wait
+/dev/block/nanda         /sd-card        vfat		defaults                   recoveryonly
+/dev/block/mmcblk1       /sd-ext         vfat		defaults                   recoveryonly
