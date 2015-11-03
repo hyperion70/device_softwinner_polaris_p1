@@ -33,8 +33,12 @@ TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # Recovery
 SW_BOARD_TOUCH_RECOVERY := true
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.sun8i
 RECOVERY_FSTAB_VERSION := 2
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
+DEVICE_RESOLUTION := 800x480
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
+BOARD_UMS_2ND_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun1/file"
 
 #CWM
 RECOVERY_SDCARD_ON_DATA := false
