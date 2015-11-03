@@ -13,5 +13,5 @@
 /dev/block/nandf         /misc           emmc		defaults                   recoveryonly
 /dev/block/nandg         /recovery       ext4       defaults recoveryonly
 /dev/block/nandh         /cache          ext4       rw,noatime,nosuid,nodev,barrier=0,journal_checksum,noauto_da_alloc    wait
-/dev/block/nanda         /sd-card        vfat		defaults                   recoveryonly
+/dev/block/nandj         /sd-card        vfat		defaults                   recoveryonly
 /dev/block/mmcblk1       /sd-ext         vfat		defaults                   recoveryonly
