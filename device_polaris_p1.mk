@@ -45,6 +45,7 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.sun8i:root/fstab.sun8i \
+	$(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
     $(LOCAL_PATH)/rootdir/init.recovery.sun8i.rc:root/init.recovery.sun8i.rc \
     $(LOCAL_PATH)/rootdir/initlogo.rle:root/initlogo.rle \
     $(LOCAL_PATH)/rootdir/init.sun8i.rc:root/init.sun8i.rc \
@@ -69,11 +70,33 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/initlogo.rle:recovery/root/initlogo.rle \
     $(LOCAL_PATH)/rootdir/ueventd.sun8i.rc:recovery/root/ueventd.sun8i.rc
 
-# PRODUCT_PACKAGES += \
-#	audio.a2dp.default \
-#	audio.usb.default \
-#	audio.primary.polaris \
-#	audio.r_submix.default
+# ext4 filesystem utils
+PRODUCT_PACKAGES += \
+	e2fsck \
+	libext2fs \
+	libext2_blkid \
+	libext2_uuid \
+	libext2_profile \
+	libext2_com_err \
+	libext2_e2p \
+	make_ext4fs
+
+PRODUCT_PACKAGES += \
+	audio.a2dp.default \
+	audio.usb.default \
+	audio.primary.polaris \
+	audio.r_submix.default
+
+PRODUCT_PACKAGES += \
+	libfacedetection
+
+# exdroid HAL
+PRODUCT_PACKAGES += \
+   lights.polaris \
+   camera.polaris \
+   sensors.polaris \
+   hwcomposer.polaris \
+   libion
 
 # camera
 PRODUCT_COPY_FILES += \
@@ -105,6 +128,4 @@ $(shell $(LOCAL_PATH)/create_prebuilt_files_mk.sh > $(LOCAL_PATH)/PrebuiltFiles.
 include $(LOCAL_PATH)/PrebuiltFiles.mk
 
 # Build
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-BUILD_NUMBER := $(shell date +%Y%m%d)
-BUILD_FINGERPRINT := $BUILD_NUMBER
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=4PDA_tablet TARGET_DEVICE=polaris_p1
