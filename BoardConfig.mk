@@ -84,27 +84,24 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 1055916032
 TARGET_HARDWARE_INCLUDE := $(TOP)/device/softwinner/polaris_p1/hardware/include
 
 # 1. realtek wifi configuration
-BOARD_WIFI_VENDOR := realtek
+BOARD_WIFI_VENDOR                := realtek
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER      := WEXT
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
+BOARD_HOSTAPD_DRIVER             := WEXT
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_rtl
+BOARD_WLAN_DEVICE                := rtl8188eu
+SW_BOARD_USR_WIFI                := rtl8188eu
 
-ifeq ($(BOARD_WIFI_VENDOR), rda)
-    WPA_SUPPLICANT_VERSION := VER_0_8_X
-    BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-    SW_BOARD_USR_WIFI := rda5990
-    BOARD_WLAN_DEVICE := rda5990
-	BOARD_WLAN_RDA_COMBO := true
-	
-endif
-ifeq ($(BOARD_WIFI_VENDOR), realtek)
-    WPA_SUPPLICANT_VERSION := VER_0_8_X
-    BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-    BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
-    BOARD_HOSTAPD_DRIVER        := NL80211
-    BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_rtl
-    SW_BOARD_USR_WIFI := rtl8188eu
-    BOARD_WLAN_DEVICE := rtl8188eu
-    # SW_BOARD_USR_WIFI := rtl8723au
-    # BOARD_WLAN_DEVICE := rtl8723au
-endif
+WIFI_DRIVER_MODULE_NAME   := 8192cu
+WIFI_DRIVER_MODULE_PATH   := "/system/vendor/modules/8188eu.ko"
+
+WIFI_DRIVER_MODULE_ARG    := ""
+WIFI_FIRMWARE_LOADER      := ""
+WIFI_DRIVER_FW_PATH_STA   := ""
+WIFI_DRIVER_FW_PATH_AP    := ""
+WIFI_DRIVER_FW_PATH_P2P   := ""
+WIFI_DRIVER_FW_PATH_PARAM := ""
 
 # 2. Bluetooth Configuration
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
