@@ -1,5 +1,3 @@
-ifneq (,$(findstring $(TARGET_DEVICE),polaris-p1))
-
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -24,5 +22,3 @@ LOCAL_SRC_FILES := recovery_updater.c bootloader.c
 LOCAL_MODULE := librecovery_updater_polaris_p1
 
 include $(BUILD_STATIC_LIBRARY)
-
-endif

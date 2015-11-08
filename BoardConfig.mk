@@ -29,7 +29,7 @@ BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # use our own init.rc
-# TARGET_PROVIDES_INIT_RC :=true
+TARGET_PROVIDES_INIT_RC :=true
 
 # Recovery
 SW_BOARD_TOUCH_RECOVERY := true
@@ -115,7 +115,7 @@ SW_BOARD_HAVE_BLUETOOTH_NAME := rtl8723au
 
 # Sepolicy
 BOARD_SEPOLICY_DIRS += \
-    $(LOCAL_PATH)/sepolicy
+    device/softwinner/polaris_p1/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     app.te \
