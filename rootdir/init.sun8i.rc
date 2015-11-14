@@ -151,10 +151,14 @@ on property:rw.logger=1
 	start logger_android
 	start logger_radio
 
-# virtual sdcard daemon running as media_rw (1023)
-# service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
-#    class late_start
-    
+# Android 5.x and earlier
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+	    class late_start
+	    disabled 
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard1
+	    class late_start
+	    disabled 
+
 # 1. realtek wifi service
 # 1.1 realtek wifi sta service
 #service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
