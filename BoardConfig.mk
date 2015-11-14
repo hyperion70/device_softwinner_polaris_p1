@@ -33,7 +33,7 @@ TARGET_PROVIDES_INIT_RC :=true
 
 # Recovery
 SW_BOARD_TOUCH_RECOVERY := true
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.sun8i
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 DEVICE_RESOLUTION := 800x480
@@ -111,10 +111,10 @@ SW_BOARD_HAVE_BLUETOOTH_NAME := rtl8723au
 
 
 # Sepolicy
-BOARD_SEPOLICY_DIRS += \
+# BOARD_SEPOLICY_DIRS += \
     device/softwinner/polaris_p1/sepolicy
 
-BOARD_SEPOLICY_UNION += \
+# BOARD_SEPOLICY_UNION += \
     app.te \
     device.te \
     domain.te \
@@ -126,4 +126,9 @@ BOARD_SEPOLICY_UNION += \
     rild.te \
     vold.te \
     wpa_supplicant.te \
+
+# G-Sensor Stuff
+SW_BOARD_USES_GSENSOR_TYPE := "mxc622x"
+SW_BOARD_GSENSOR_DIRECT_X  := "true"
+SW_BOARD_GSENSOR_DIRECT_Y  := "true"
 

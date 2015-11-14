@@ -1,9 +1,10 @@
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_mini_tablet_wifionly.mk)
+$(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
 LOCAL_PATH := device/softwinner/polaris_p1
 
 # The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
+# $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 DEVICE_PACKAGE_OVERLAYS :=  $(LOCAL_PATH)/overlay
 PRODUCT_CHARACTERISTICS := tablet
@@ -44,6 +45,7 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/charger:root/charger \
     $(LOCAL_PATH)/rootdir/fstab.sun8i:root/fstab.sun8i \
 	$(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
     $(LOCAL_PATH)/rootdir/init.recovery.sun8i.rc:root/init.recovery.sun8i.rc \
@@ -114,14 +116,19 @@ PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.location.xml:s
 
 # System Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sf.lcd_density=120 \
+	ro.opengles.version = 131072 \
+	drm.service.enabled=true \
+	debug.force.software.rending=true \
+	debug.hwui.render_dirty_regions=false \
 	persist.sys.timezone=Europe/Moscow \
 	persist.sys.language=ru \
 	persist.sys.country=RU
 
 PRODUCT_PROPERTY_OVERRIDES += \
+	ro.sf.lcd_density=120 \
 	wifi.interface=wlan0 \
-	wifi.supplicant_scan_interval=15
+	wifi.supplicant_scan_interval=15 \
+	ro.device.screen_res=800x480
 
 # Copy all files from prebuilts
 $(shell $(LOCAL_PATH)/create_prebuilt_files_mk.sh > $(LOCAL_PATH)/PrebuiltFiles.mk)
