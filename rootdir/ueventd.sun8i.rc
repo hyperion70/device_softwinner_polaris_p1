@@ -19,4 +19,4 @@
 /dev/mali0		  0777   system		graphics
 /dev/block/nandf          0660   system     system
 /dev/dmard10			  	  0777	 system	    system
-/dev/dmard09			  	  0777	 system	    system
+
