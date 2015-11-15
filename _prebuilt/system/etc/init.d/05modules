@@ -1,0 +1,8 @@
+#!/system/bin/sh
+#
+insmod /system/vendor/modules/sunxi-keyboard.ko
+insmod /system/vendor/modules/gslX680.ko
+insmod /system/vendor/modules/gt818_ts.ko
+insmod /system/vendor/modules/sw-device.ko
+
+echo "done Additional Modules Autoload"
